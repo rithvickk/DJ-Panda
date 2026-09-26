@@ -6,20 +6,19 @@ st.set_page_config(page_title="Carolina Data Challenge", layout="wide")
 st.title("Carolina Data Challenge")
 
 
+DEFAULT_DATA = "data/mxmh_survey_results.csv"
+
+
 @st.cache_data
 def load_data(file) -> pd.DataFrame:
-    if file.name.endswith((".xlsx", ".xls")):
+    name = file if isinstance(file, str) else file.name
+    if name.endswith((".xlsx", ".xls")):
         return pd.read_excel(file)
     return pd.read_csv(file)
 
 
-uploaded = st.sidebar.file_uploader("Upload a dataset", type=["csv", "xlsx", "xls"])
-
-if uploaded is None:
-    st.info("Upload a CSV or Excel file in the sidebar to get started.")
-    st.stop()
-
-df = load_data(uploaded)
+uploaded = st.sidebar.file_uploader("Upload a different dataset", type=["csv", "xlsx", "xls"])
+df = load_data(uploaded if uploaded is not None else DEFAULT_DATA)
 
 st.subheader("Preview")
 st.dataframe(df.head(100), use_container_width=True)

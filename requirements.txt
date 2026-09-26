@@ -7,3 +7,5 @@ plotly
 scikit-learn
 openpyxl
 ipykernel
+kagglehub
+kaggle
