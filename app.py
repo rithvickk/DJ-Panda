@@ -1,4 +1,4 @@
-import pandas as pd
+﻿import pandas as pd
 import plotly.express as px
 import streamlit as st
 
@@ -21,7 +21,7 @@ uploaded = st.sidebar.file_uploader("Upload a different dataset", type=["csv", "
 df = load_data(uploaded if uploaded is not None else DEFAULT_DATA)
 
 st.subheader("Preview")
-st.dataframe(df.head(100), use_container_width=True)
+st.dataframe(df.head(100), width="stretch")
 
 col1, col2 = st.columns(2)
 col1.metric("Rows", f"{len(df):,}")
@@ -32,4 +32,4 @@ if numeric_cols:
     st.subheader("Explore")
     x = st.selectbox("X axis", df.columns)
     y = st.selectbox("Y axis", numeric_cols)
-    st.plotly_chart(px.scatter(df, x=x, y=y), use_container_width=True)
+    st.plotly_chart(px.scatter(df, x=x, y=y), width="stretch")
