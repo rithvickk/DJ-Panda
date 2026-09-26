@@ -1,0 +1,6 @@
+world,country_code,country_name,lastfm_users,power_distance,individualism,masculinity,uncertainty_avoidance,long_term_orientation,indulgence,whr_year,life_ladder,social_support,positive_affect,negative_affect
+India,IN,India,122,77.0,48.0,56.0,40.0,51.0,26.0,2017,4.046,0.607,0.682,0.318
+South Korea,KR,South Korea,35,,,,,,,2017,5.874,0.807,0.623,0.235
+Latin America,MX,Mexico,705,81.0,30.0,69.0,82.0,24.0,97.0,2017,6.41,0.8,0.843,0.231
+Europe,DE,Germany,4578,35.0,67.0,66.0,65.0,83.0,40.0,2017,7.074,0.892,0.737,0.196
+West Africa,NG,Nigeria,3,,,,,,,2017,5.322,0.733,0.725,0.236

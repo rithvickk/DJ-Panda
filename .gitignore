@@ -17,5 +17,9 @@ env/
 .DS_Store
 Thumbs.db
 
-# Large raw data (uncomment if datasets are too big for GitHub)
-# data/raw/
+# Large raw data (over GitHub's 100 MB limit - download these yourself)
+data/acoustic_features_lfm_id.tsv
+data/events.tsv
+
+# Generated preview from `python dancer.py`
+dancer_preview.html

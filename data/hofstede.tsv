@@ -1,0 +1,48 @@
+no	ctr	country	power_distance	individualism	masculinity	uncertainty_avoidance	long_term_orientation	indulgence
+1	AR	Argentina	49	46	56	86	20	62
+2	AT	Austria	11	55	79	70	60	63
+3	AU	Australia	38	90	61	51	21	71
+4	BE	Belgium	65	75	54	94	82	57
+5	BG	Bulgeria	70	30	40	85	69	16
+6	BR	Brazil	69	38	49	76	44	59
+7	BY	Belarus	\N	\N	\N	\N	81	15
+8	CA	Canada	39	80	52	48	36	68
+9	CH	Switzerland	34	68	70	58	74	66
+10	CL	Chile	63	23	28	86	31	68
+11	CN	China	80	20	66	30	87	24
+12	CO	Colombia	67	13	64	80	13	83
+13	CZ	Czech Rep	57	58	57	74	70	29
+14	DE	Germany	35	67	66	65	83	40
+15	DK	Denmark	18	74	16	23	35	70
+16	EE	Estonia	40	60	30	60	82	16
+17	ES	Spain	57	51	42	86	48	44
+18	FI	Finland	33	63	26	59	38	57
+19	FR	France	68	71	43	86	63	48
+20	GR	Greece	60	35	57	112	45	50
+21	HR	Croatia	73	33	40	80	58	33
+22	HU	Hungary	46	80	88	82	58	31
+23	ID	Indonesia	78	14	46	48	62	38
+24	IE	Ireland	28	70	68	35	24	65
+25	IL	Israel	13	54	47	81	38	\N
+26	IN	India	77	48	56	40	51	26
+27	IR	Iran	58	41	43	59	14	40
+28	IT	Italy	50	76	70	75	61	30
+29	JP	Japan	54	46	95	92	88	42
+30	LT	Lithuania	42	60	19	65	82	16
+31	LV	Latvia	44	70	9	63	69	13
+32	MX	Mexico	81	30	69	82	24	97
+33	NL	Netherlands	38	80	14	53	67	68
+34	NO	Norway	31	69	8	50	35	55
+35	NZ	New Zealand	22	79	58	49	33	75
+36	PL	Poland	68	60	64	93	38	29
+37	PT	Portugal	63	27	31	104	28	33
+38	RO	Romania	90	30	42	90	52	20
+39	RS	Serbia	86	25	43	92	52	28
+40	RU	Russia	93	39	36	95	81	20
+41	SE	Sweden	31	71	5	29	53	78
+42	SK	Slovak Rep	104	52	110	51	77	28
+43	TR	Turkey	66	37	45	85	46	49
+44	UA	Ukraine	\N	\N	\N	\N	86	14
+45	UK	Great Britain	35	89	66	35	51	69
+46	US	U.S.A.	40	91	62	46	26	68
+47	VE	Venezuela	81	12	73	76	16	100

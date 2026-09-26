@@ -1,0 +1,29 @@
+mood,goal,signal,n_respondents,median_bpm,genre_based_tempo,top_genres,danceability,energy,valence,acousticness,tempo
+Stressed,Calm down,Anxiety,281,120.0,119.7,"Lofi, Folk, Video game music",0.541,0.393,0.488,0.502,105.0
+Stressed,Lift my mood,Anxiety,281,120.0,119.7,"Lofi, Folk, Video game music",0.641,0.643,0.688,0.352,125.0
+Stressed,Get energized,Anxiety,281,120.0,119.7,"Lofi, Folk, Video game music",0.691,0.793,0.538,0.252,135.0
+Stressed,Keep the vibe,Anxiety,281,120.0,119.7,"Lofi, Folk, Video game music",0.591,0.593,0.488,0.352,120.0
+Restless,Calm down,Anxiety,281,120.0,119.7,"Lofi, Folk, Video game music",0.541,0.393,0.488,0.502,105.0
+Restless,Lift my mood,Anxiety,281,120.0,119.7,"Lofi, Folk, Video game music",0.641,0.643,0.688,0.352,125.0
+Restless,Get energized,Anxiety,281,120.0,119.7,"Lofi, Folk, Video game music",0.691,0.793,0.538,0.252,135.0
+Restless,Keep the vibe,Anxiety,281,120.0,119.7,"Lofi, Folk, Video game music",0.591,0.593,0.488,0.352,120.0
+Drained,Calm down,Depression,189,120.0,120.0,"Metal, EDM, Latin",0.541,0.411,0.492,0.479,105.0
+Drained,Lift my mood,Depression,189,120.0,120.0,"Metal, EDM, Latin",0.641,0.661,0.692,0.329,125.0
+Drained,Get energized,Depression,189,120.0,120.0,"Metal, EDM, Latin",0.691,0.811,0.542,0.229,135.0
+Drained,Keep the vibe,Depression,189,120.0,120.0,"Metal, EDM, Latin",0.591,0.611,0.492,0.329,120.0
+Lonely,Calm down,Depression,189,120.0,120.0,"Metal, EDM, Latin",0.541,0.411,0.492,0.479,105.0
+Lonely,Lift my mood,Depression,189,120.0,120.0,"Metal, EDM, Latin",0.641,0.661,0.692,0.329,125.0
+Lonely,Get energized,Depression,189,120.0,120.0,"Metal, EDM, Latin",0.691,0.811,0.542,0.229,135.0
+Lonely,Keep the vibe,Depression,189,120.0,120.0,"Metal, EDM, Latin",0.591,0.611,0.492,0.329,120.0
+Can't sleep,Calm down,Insomnia,123,127.0,119.3,"Gospel, EDM, Lofi",0.534,0.386,0.478,0.512,112.0
+Can't sleep,Lift my mood,Insomnia,123,127.0,119.3,"Gospel, EDM, Lofi",0.634,0.636,0.678,0.362,132.0
+Can't sleep,Get energized,Insomnia,123,127.0,119.3,"Gospel, EDM, Lofi",0.684,0.786,0.528,0.262,142.0
+Can't sleep,Keep the vibe,Insomnia,123,127.0,119.3,"Gospel, EDM, Lofi",0.584,0.586,0.478,0.362,127.0
+Happy,Calm down,low_all,61,112.5,118.1,"Gospel, Latin, Country",0.527,0.324,0.505,0.607,97.5
+Happy,Lift my mood,low_all,61,112.5,118.1,"Gospel, Latin, Country",0.627,0.574,0.705,0.457,117.5
+Happy,Get energized,low_all,61,112.5,118.1,"Gospel, Latin, Country",0.677,0.724,0.555,0.357,127.5
+Happy,Keep the vibe,low_all,61,112.5,118.1,"Gospel, Latin, Country",0.577,0.524,0.505,0.457,112.5
+Energetic,Calm down,low_all,61,112.5,118.1,"Gospel, Latin, Country",0.527,0.324,0.505,0.607,97.5
+Energetic,Lift my mood,low_all,61,112.5,118.1,"Gospel, Latin, Country",0.627,0.574,0.705,0.457,117.5
+Energetic,Get energized,low_all,61,112.5,118.1,"Gospel, Latin, Country",0.677,0.724,0.555,0.357,127.5
+Energetic,Keep the vibe,low_all,61,112.5,118.1,"Gospel, Latin, Country",0.577,0.524,0.505,0.457,112.5

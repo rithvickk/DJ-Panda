@@ -1,9 +1,14 @@
-streamlit
+# App (these are all Streamlit Community Cloud needs)
+streamlit>=1.50
 pandas
 numpy
+altair
+plotly
+
+# Offline scripts / notebooks
+polars          # only for the optional scripts/03b_country_listening.py
 matplotlib
 seaborn
-plotly
 scikit-learn
 openpyxl
 ipykernel
