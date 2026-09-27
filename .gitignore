@@ -1,15 +1,10 @@
 # Python
 __pycache__/
-*.py[cod]
 .venv/
-venv/
-env/
 
-# Jupyter
-.ipynb_checkpoints/
-
-# Streamlit secrets
-.streamlit/secrets.toml
+# Web app
+web/node_modules/
+web/dist/
 
 # Editors / OS
 .vscode/
@@ -17,9 +12,5 @@ env/
 .DS_Store
 Thumbs.db
 
-# Large raw data (over GitHub's 100 MB limit - download these yourself)
+# Large raw data we don't use (over GitHub's 100 MB limit)
 data/acoustic_features_lfm_id.tsv
-data/events.tsv
-
-# Generated preview from `python dancer.py`
-dancer_preview.html

@@ -19,7 +19,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 # ---------------------------------------------------------------------------
 # EDIT ME: which Spotify track_genre values belong to each world.
-# The world names here must match the world names used in dj_logic.py.
+# The world names here must match WORLDS in web/src/lib/dj.js.
 # ---------------------------------------------------------------------------
 WORLD_TO_GENRES = {
     "India": ["indian"],
@@ -60,7 +60,7 @@ EXCLUDE_ARTISTS = {
 }
 
 # How many songs to keep per world (the most popular ones).
-SONGS_PER_WORLD = 300
+SONGS_PER_WORLD = 5
 
 # Paths (built from this file's location so the script works from any folder).
 PROJECT_DIR = Path(__file__).resolve().parent.parent

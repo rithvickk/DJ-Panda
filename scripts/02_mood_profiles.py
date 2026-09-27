@@ -1,10 +1,10 @@
 """
-Step 02: Turn the MxMH survey into a "target sound" for every mood + goal.
+Step 02: Turn the MxMH survey into a "target sound" for every mood + intensity + goal.
 
 The idea, in plain words:
-  1. Pick survey respondents whose self-reported scores match a mood
-     (for example, "Stressed" -> people who rated their Anxiety 7 or higher)
-     AND who said music improves how they feel.
+  1. Pick survey respondents whose self-reported scores match a mood AND
+     how strong it is (for example, "Stressed" + "Quite a bit" -> people who
+     rated their Anxiety 7-8 out of 10) AND who said music improves how they feel.
   2. Look at which genres that group listens to most.
   3. Use the Spotify Tracks Dataset to find what those genres typically
      sound like (danceability, energy, valence, acousticness).
@@ -13,7 +13,7 @@ The idea, in plain words:
 IMPORTANT: this describes population-level patterns in how survey respondents
 say music helps them. It does NOT diagnose or predict anyone's mental health.
 
-Output: processed/mood_profiles.csv (one row per mood + goal combination)
+Output: processed/mood_profiles.csv (one row per mood + intensity + goal)
 
 Run from the project folder:
     python scripts/02_mood_profiles.py
@@ -40,9 +40,18 @@ MOOD_TO_SIGNAL = {
     "Energetic": "low_all",
 }
 
-HIGH_SCORE = 7   # "high on a signal" means a score of 7 or more (out of 10)
-LOW_SCORE = 3    # "low on everything" means all four scores are 3 or less
 SIGNAL_COLUMNS = ["Anxiety", "Depression", "Insomnia", "OCD"]
+
+# ---------------------------------------------------------------------------
+# EDIT ME: the app's third question ("How strong is that feeling?").
+# Each answer picks a band of the survey's own 0-10 scores.
+#   Signal moods (e.g. Anxiety): the signal score must be between (low, high).
+#   "low_all" (positive moods): a stronger good mood means the HIGHEST of the
+#   four scores must be at or below the number given.
+# ---------------------------------------------------------------------------
+INTENSITIES = ["mild", "strong", "intense"]
+SIGNAL_BANDS = {"mild": (4, 6), "strong": (7, 8), "intense": (9, 10)}
+LOW_ALL_MAX = {"mild": 5, "strong": 3, "intense": 2}
 
 # How we turn the frequency answers into numbers.
 FREQUENCY_POINTS = {"Never": 0, "Rarely": 1, "Sometimes": 2, "Very frequently": 3}
@@ -104,14 +113,24 @@ SPOTIFY_FILE = PROJECT_DIR / "data" / "spotify_tracks.csv"
 OUTPUT_FILE = PROJECT_DIR / "processed" / "mood_profiles.csv"
 
 
-def select_respondents(survey, signal):
-    """Return the survey rows that match a signal AND said music helps."""
+def select_respondents(survey, signal, intensity):
+    """Return the survey rows that match a signal + intensity AND said music helps."""
     helped = survey["Music effects"] == "Improve"
     if signal == "low_all":
-        matches = (survey[SIGNAL_COLUMNS] <= LOW_SCORE).all(axis=1)
+        matches = survey[SIGNAL_COLUMNS].max(axis=1) <= LOW_ALL_MAX[intensity]
     else:
-        matches = survey[signal] >= HIGH_SCORE
+        low, high = SIGNAL_BANDS[intensity]
+        matches = survey[signal].between(low, high)
     return survey[helped & matches]
+
+
+def score_rule(signal, intensity):
+    """Plain-language description of who was selected (shown in the app)."""
+    if signal == "low_all":
+        return (f"rated anxiety, depression, insomnia and OCD all "
+                f"{LOW_ALL_MAX[intensity]} or lower out of 10")
+    low, high = SIGNAL_BANDS[intensity]
+    return f"rated their {signal.lower()} {low}-{high} out of 10"
 
 
 def genre_mix(group):
@@ -166,10 +185,13 @@ def main():
     print(everyone_sound.round(2).to_string())
 
     base_profiles = []
-    for mood, signal in MOOD_TO_SIGNAL.items():
-        group = select_respondents(survey, signal)
+    moods_and_intensities = [(mood, signal, intensity)
+                             for mood, signal in MOOD_TO_SIGNAL.items()
+                             for intensity in INTENSITIES]
+    for mood, signal, intensity in moods_and_intensities:
+        group = select_respondents(survey, signal, intensity)
         if len(group) < MIN_RESPONDENTS:
-            print(f"  WARNING: only {len(group)} respondents for {mood} - results may be noisy")
+            print(f"  WARNING: only {len(group)} respondents for {mood}/{intensity} - results may be noisy")
 
         mix = genre_mix(group).loc[genre_sound.index]
         group_sound = sound_of(mix)
@@ -188,7 +210,9 @@ def main():
         distinctive = lift.sort_values(ascending=False).head(3).index.tolist()
         base_profiles.append({
             "mood": mood,
+            "intensity": intensity,
             "signal": signal,
+            "score_rule": score_rule(signal, intensity),
             "n_respondents": len(group),
             "median_bpm": median_bpm,
             "genre_based_tempo": round(genre_tempo, 1),
@@ -197,7 +221,7 @@ def main():
         })
 
     base = pd.DataFrame(base_profiles)
-    print("\nCHECK: base profile per mood (before goal adjustment)")
+    print("\nCHECK: base profile per mood + intensity (before goal adjustment)")
     print(base.round(2).to_string(index=False))
 
     # --- 4. Apply each goal -----------------------------------------------
@@ -215,7 +239,7 @@ def main():
             rows.append(row)
 
     profiles = pd.DataFrame(rows)
-    column_order = ["mood", "goal", "signal", "n_respondents", "median_bpm",
+    column_order = ["mood", "intensity", "goal", "signal", "score_rule", "n_respondents", "median_bpm",
                     "genre_based_tempo", "top_genres"] + PROFILE_FEATURES
     profiles = profiles[column_order].round(3)
 
@@ -223,8 +247,8 @@ def main():
     OUTPUT_FILE.parent.mkdir(exist_ok=True)
     profiles.to_csv(OUTPUT_FILE, index=False)
 
-    print(f"\nCHECK: {len(profiles)} rows (expected {len(MOOD_TO_SIGNAL) * len(GOAL_ADJUSTMENTS)})")
-    print(profiles[["mood", "goal", "n_respondents"] + PROFILE_FEATURES].round(2).to_string(index=False))
+    print(f"\nCHECK: {len(profiles)} rows (expected {len(MOOD_TO_SIGNAL) * len(INTENSITIES) * len(GOAL_ADJUSTMENTS)})")
+    print(profiles[["mood", "intensity", "goal", "n_respondents"] + PROFILE_FEATURES].round(2).to_string(index=False))
     print(f"\nSaved to {OUTPUT_FILE}")
 
 

@@ -1,16 +1,2 @@
-# App (these are all Streamlit Community Cloud needs)
-streamlit>=1.50
+# Data pipeline (scripts/01-04). The web app in web/ uses npm.
 pandas
-numpy
-altair
-plotly
-
-# Offline scripts / notebooks
-polars          # only for the optional scripts/03b_country_listening.py
-matplotlib
-seaborn
-scikit-learn
-openpyxl
-ipykernel
-kagglehub
-kaggle
